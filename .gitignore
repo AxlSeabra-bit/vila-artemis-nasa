@@ -1,0 +1,15 @@
+.vercel
+.local-data/
+.env*
+!.env.example
+node_modules/
+dist/
+dist-test/
+artifacts/
+test-results/
+playwright-report/
+android/.gradle/
+android/**/build/
+android/local.properties
+*.jks
+*.keystore

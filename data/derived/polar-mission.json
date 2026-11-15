@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "reviewedOn": "2026-11-15",
+  "region": "south-polar",
+  "target": "Cabeus",
+  "observationDate": "2009-10-09",
+  "instrument": "NASA LCROSS",
+  "finding": "Water ice was identified in material excavated by the impact into Cabeus, near the lunar south pole.",
+  "sourceUrl": "https://www.nasa.gov/general/what-is-lcross-the-lunar-crater-observation-and-sensing-satellite/",
+  "supportingSourceUrl": "https://www.jpl.nasa.gov/news/ice-confirmed-at-the-moons-poles/",
+  "limits": "LCROSS detected ice, not a liquid water well. Extraction, treatment, yields and a safe crewed landing site are not established by this game. The surface board and its research marker are illustrative, not georeferenced terrain. The atlas marker indicates only the south polar region.",
+  "gameRules": {"price":120,"polarSurcharge":0,"crewMinimum":1,"crewMaximum":6,"constructionAstronautSeconds":45}
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070d1c"/>
+      <stop offset="100%" stop-color="#0b3d91"/>
+    </linearGradient>
+    <linearGradient id="dome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="40" fill="url(#bg)"/>
+  <circle cx="42" cy="38" r="3" fill="#ffffff" opacity="0.8"/>
+  <circle cx="152" cy="46" r="2.5" fill="#ffffff" opacity="0.7"/>
+  <circle cx="136" cy="28" r="2" fill="#38bdf8"/>
+  <ellipse cx="96" cy="136" rx="68" ry="20" fill="#334155"/>
+  <path d="M46 130 C46 78, 146 78, 146 130 Z" fill="url(#dome)" stroke="#bae6fd" stroke-width="4"/>
+  <rect x="82" y="110" width="28" height="24" rx="4" fill="#f59e0b"/>
+  <path d="M96 34 L106 66 L96 60 L86 66 Z" fill="#fc3d21"/>
+  <text x="96" y="172" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="18" fill="#f8fafc">ARTEMIS</text>
+</svg>

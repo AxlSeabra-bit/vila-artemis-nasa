@@ -1,0 +1,44 @@
+import type { StemQuestion } from './types';
+type Text = [string, string, string];
+function q(id: string, question: Text, options: [Text,Text,Text], correctIndex: number, explanation: Text): StemQuestion {
+  const text = (v:Text) => ({pt:v[0],en:v[1],es:v[2]});
+  return { id, question:text(question), options:{pt:options.map(o=>o[0]),en:options.map(o=>o[1]),es:options.map(o=>o[2])},correctIndex,explanation:text(explanation) };
+}
+export const STEM_QUESTIONS: StemQuestion[] = [
+  q('q_eclss', ['O sistema da ISS chegou a recuperar 98% de qual recurso?','Which resource reached 98% recovery in an ISS system?','¿Qué recurso alcanzó un 98% de recuperación en un sistema de la ISS?'],
+    [['Água','Water','Agua'],['Luz solar','Sunlight','Luz solar'],['Todos os alimentos','All food','Todos los alimentos']],0,
+    ['Esse marco foi de recuperação de água. Reciclar exige equipamentos e energia.','That milestone was for water recovery. Recycling needs equipment and power.','Ese logro fue de recuperación de agua. Reciclar necesita equipos y energía.']),
+  q('q_shackleton',['Por que procurar gelo nas sombras do polo sul lunar?','Why search for ice in lunar south polar shadows?','¿Por qué buscar hielo en las sombras del polo sur lunar?'],
+    [['Ali sempre faz calor','It is always warm there','Allí siempre hace calor'],['O frio pode conservar gelo','Cold can preserve ice','El frío puede conservar hielo'],['Há lagos para nadar','There are swimming lakes','Hay lagos para nadar']],1,
+    ['O M³ detectou gelo em partes dos polos. Isso não garante gelo em toda cratera.','M³ detected ice in parts of the poles. Not every crater is guaranteed to contain ice.','M³ detectó hielo en partes de los polos. Eso no garantiza hielo en cada cráter.']),
+  q('q_donki',['No treino de tempestade solar, qual escolha protege a equipe?','During a solar storm drill, which choice protects the crew?','Durante un ensayo de tormenta solar, ¿qué protege al equipo?'],
+    [['Continuar coletando lá fora','Keep collecting outside','Seguir recogiendo afuera'],['Ir ao abrigo e pausar a coleta','Use shelter and pause collection','Ir al refugio y pausar la recolección'],['Jogar fora a água','Discard the water','Tirar el agua']],1,
+    ['O abrigo reduz a exposição, mas a equipe para de coletar. DONKI não mede a dose em cada ponto da Lua.','Shelter reduces exposure, but the crew stops collecting. DONKI does not measure dose at every lunar location.','El refugio reduce la exposición, pero se pausa la recolección. DONKI no mide la dosis en cada punto lunar.']),
+  q('q_kilopower',['Sem luz do Sol, o painel solar gera energia?','Does a solar panel generate power without sunlight?','¿Un panel solar genera energía sin luz del Sol?'],
+    [['Não, precisamos de energia armazenada ou outra fonte','No, stored power or another source is needed','No, necesitamos energía almacenada u otra fuente'],['Sim, sem limite','Yes, without limit','Sí, sin límite'],['Só se pintarmos o painel','Only if we paint it','Solo si pintamos el panel']],0,
+    ['Baterias guardam energia. Um reator de fissão é outra opção estudada para bases.','Batteries store power. Fission is another option studied for outposts.','Las baterías guardan energía. La fisión es otra opción estudiada para bases.']),
+  q('q_radlab',['Uma medição feita na ISS é a dose exata no solo lunar?','Is an ISS reading the exact dose on the lunar surface?','¿Una medición de la ISS es la dosis exacta del suelo lunar?'],
+    [['Sim, todo o espaço é igual','Yes, all space is identical','Sí, todo el espacio es igual'],['Não, ambiente e proteção mudam','No, environment and shielding differ','No, el entorno y la protección cambian'],['A ISS fica na Lua','The ISS is on the Moon','La ISS está en la Luna']],1,
+    ['O RadLab informa instrumento, local e horário. Precisamos desses detalhes para comparar.','RadLab provides instrument, location and time. We need this context to compare readings.','RadLab indica instrumento, lugar y hora. Necesitamos ese contexto para comparar.']),
+  q('q_food',['O que uma estufa precisa para produzir comida?','What does a greenhouse need to grow food?','¿Qué necesita un invernadero para producir comida?'],
+    [['Só poeira lunar','Only lunar dust','Solo polvo lunar'],['Só um botão','Only a button','Solo un botón'],['Luz, água, nutrientes e ambiente controlado','Light, water, nutrients and a controlled environment','Luz, agua, nutrientes y un entorno controlado']],2,
+    ['Cultivar também gasta energia e tempo. No jogo o crescimento é acelerado.','Growing food also takes power and time. Growth is sped up in the game.','Cultivar también consume energía y tiempo. El juego acelera el crecimiento.']),
+  q('q_ice_map',['Os pontos azuis no mapa M³ são o quê?','What are the blue points on the M³ map?','¿Qué son los puntos azules del mapa M³?'],
+    [['Indicações de gelo superficial detectado','Detections of surface ice','Detecciones de hielo superficial'],['Piscinas de água líquida','Liquid water pools','Piscinas de agua líquida'],['Estações já construídas','Existing stations','Estaciones ya construidas']],0,
+    ['É gelo, não um lago. Precisamos extrair, tratar e estudar quanto pode ser usado.','It is ice, not a lake. Extraction, treatment and resource assessment are needed.','Es hielo, no un lago. Hace falta extraer, tratar y estudiar cuánto se puede usar.']),
+  q('q_radio',['Por que a resposta da Terra não chega na mesma hora?','Why does an Earth reply take time?','¿Por qué tarda una respuesta de la Tierra?'],
+    [['O espaço desliga o rádio','Space switches the radio off','El espacio apaga la radio'],['O sinal precisa percorrer a distância','The signal must travel the distance','La señal debe recorrer la distancia'],['A Lua não recebe sinais','The Moon cannot receive signals','La Luna no recibe señales']],1,
+    ['Até a Lua, a luz leva cerca de 1,3 segundo por sentido. Suprimentos demoram muito mais.','Light takes about 1.3 seconds each way to the Moon. Supplies take much longer.','La luz tarda unos 1,3 segundos por sentido hasta la Luna. Los suministros tardan mucho más.']),
+  q('q_terrain',['Uma região menos exposta no modelo de radiação dispensa abrigo?','Does a less exposed model region make shelter unnecessary?','¿Una zona menos expuesta del modelo permite prescindir del refugio?'],
+    [['Sim, é totalmente segura','Yes, completely safe','Sí, es totalmente segura'],['Só durante o dia','Only during daytime','Solo durante el día'],['Não, o risco continua','No, risk remains','No, el riesgo continúa']],2,
+    ['O relevo pode bloquear parte das partículas. Nenhuma cor do mapa significa segurança garantida.','Terrain can block some particles. No map color guarantees safety.','El relieve puede bloquear algunas partículas. Ningún color garantiza seguridad.']),
+  q('q_archive',['Um evento NASA de 2024 aparece no treino. Ele está acontecendo agora?','A 2024 NASA event appears in training. Is it happening now?','Un evento NASA de 2024 aparece en el entrenamiento. ¿Ocurre ahora?'],
+    [['Não, é um registro histórico','No, it is a historical record','No, es un registro histórico'],['Sim, porque está na tela','Yes, because it is on screen','Sí, porque está en pantalla'],['A data não importa','The date does not matter','La fecha no importa']],0,
+    ['Dados reais podem ser antigos. A fonte e a data ajudam a entender o que estamos vendo.','Real data can be old. Source and date help us understand what we see.','Los datos reales pueden ser antiguos. La fuente y la fecha nos ayudan a entenderlos.']),
+  q('q_power',['A energia acabou. O que acontece com extratores e estufa?','Power runs out. What happens to extractors and greenhouse?','Se agota la energía. ¿Qué pasa con extractores e invernadero?'],
+    [['Produzem sem parar','They keep producing forever','Producen sin parar'],['A produção diminui ou para','Production slows or stops','La producción disminuye o se detiene'],['Produzem o dobro','Production doubles','Producen el doble']],1,
+    ['Água, comida e energia dependem uns dos outros. Planeje reservas antes da noite.','Water, food and power depend on each other. Plan reserves before night.','Agua, comida y energía dependen entre sí. Planea reservas antes de la noche.']),
+  q('q_moon_dust',['Há tempestades de vento como as de Marte na Lua?','Are there Mars-like wind storms on the Moon?','¿Hay tormentas de viento como las de Marte en la Luna?'],
+    [['Sim, todos os dias','Yes, every day','Sí, todos los días'],['Sim, com chuva','Yes, with rain','Sí, con lluvia'],['Não, a Lua tem uma atmosfera extremamente rarefeita','No, the Moon has an extremely thin atmosphere','No, la Luna tiene una atmósfera extremadamente tenue']],2,
+    ['Poeira lunar pode ser levantada por impactos e equipamentos, mas não por ventos como em Marte.','Impacts and equipment can lift lunar dust, but not Mars-like winds.','Los impactos y equipos pueden levantar polvo lunar, pero no vientos como en Marte.']),
+];

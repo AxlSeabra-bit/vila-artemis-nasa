@@ -1,0 +1,13 @@
+{
+  "appId": "com.axlseabra.ageofartemis",
+  "appName": "Age of Artemis",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#4a2511"
+  }
+}

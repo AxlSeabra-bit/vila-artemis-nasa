@@ -1,0 +1,28 @@
+{
+  "name": "age-of-artemis-nasa",
+  "version": "0.2.1-AH",
+  "private": true,
+  "description": "Age of Artemis: Junior Astronaut Outpost - NASA Space Apps Challenge 2026",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && node scripts/build-sw.mjs",
+    "preview": "vite preview",
+    "test:sim": "esbuild scripts/verify_sim.ts --bundle --platform=node --format=esm --outfile=dist-test/verify_sim.mjs && node dist-test/verify_sim.mjs && esbuild scripts/verify_science.ts --bundle --platform=node --format=esm --outfile=dist-test/verify_science.mjs && node dist-test/verify_science.mjs && esbuild scripts/verify_mission.ts --bundle --platform=node --format=esm --outfile=dist-test/verify_mission.mjs && node dist-test/verify_mission.mjs && esbuild scripts/verify_tutorial.ts --bundle --platform=node --format=esm --outfile=dist-test/verify_tutorial.mjs && node dist-test/verify_tutorial.mjs && esbuild scripts/verify_campaign.ts --bundle --platform=node --format=esm --outfile=dist-test/verify_campaign.mjs && node dist-test/verify_campaign.mjs",
+    "test:e2e": "esbuild scripts/campaign-test-helpers.ts --bundle --platform=node --format=esm --outfile=dist-test/campaign-fixtures.mjs && playwright test",
+    "lan": "node server/index.mjs --host 0.0.0.0 --port 4176"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.2",
+    "@fontsource/fredoka": "^5.3.0",
+    "@fontsource/silkscreen": "^5.3.0",
+    "@playwright/test": "^1.58.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/core": "^8.6.2"
+  },
+  "projectVersion": "0.2.1AH-simulador_de_missao_da_NASA"
+}

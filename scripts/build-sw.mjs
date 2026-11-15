@@ -1,0 +1,12 @@
+import {readFileSync,writeFileSync,readdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const walk=(path)=>readdirSync(path,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(`${path}/${e.name}`):[`${path}/${e.name}`]);
+const files=walk('dist').filter(p=>!p.endsWith('/sw.js'));
+const hash=createHash('sha256');
+hash.update(readFileSync('public/sw.js'));
+for(const f of files) hash.update(readFileSync(f));
+const version=hash.digest('hex').slice(0,12);
+const assets=['/',...files.map(f=>f.replace(/^dist/,''))];
+const template=readFileSync('public/sw.js','utf8').replace('__BUILD_VERSION__',version).replace('/* BUILD_ASSETS */',JSON.stringify(assets));
+writeFileSync('dist/sw.js',template);
+console.log(`Offline cache ${version}: ${assets.length} local assets`);

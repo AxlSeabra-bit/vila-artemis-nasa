@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#4a2511" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="/icons/icon-192.png" />
+    <title>Vila Artemis NASA | Base Pixel Lunar</title>
+  </head>
+  <body>
+    <div id="mission-flow" role="dialog" aria-modal="true" aria-labelledby="mission-heading"></div>
+    <div id="app" inert>
+      <!-- Topo Stardew Madera + Pergaminho -->
+      <header id="top-hud">
+        <div class="hud-brand">
+          <span class="badge-nasa">🚀 NASA</span>
+          <strong id="hud-mission">Missão: Lua</strong>
+          <span class="lunar-wallet"><img src="/icons/moon-coin.svg" alt="" /><b id="val-coins">0</b></span>
+          <span id="hud-sol" class="pill-sol">☀️ Dia 1</span>
+          <div class="level-and-knowledge">
+          <button id="rank-badge" class="rank-pill" type="button" title="Conhecimento da equipe">
+            <span id="rank-icon">🌙</span>
+            <span id="rank-name">Cadete</span>
+          </button>
+          <div id="knowledge-meter" class="hud-knowledge" role="progressbar" aria-label="Conhecimento para o próximo nível" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
+            <img src="/icons/knowledge.svg" alt=""/><div><span id="knowledge-label">Conhecimento</span><div class="knowledge-fill-track"><span id="knowledge-fill"></span></div></div><b id="knowledge-number">0/20</b>
+          </div>
+          </div>
+          <span id="hud-classroom-timer" class="pill-timer hidden">⏱️ 10:00</span>
+        </div>
+
+        <div class="hud-resources">
+          <div class="res-chip energy" title="Energia Solar">⚡ <span id="val-energy">120</span></div>
+          <div class="res-chip water" title="Água">💧 <span id="val-water">120</span></div>
+          <div class="res-chip oxygen" title="Oxigênio"><img src="/icons/oxygen.svg" alt="Oxigênio"/><span id="val-oxygen">120</span></div>
+          <div class="res-chip food" title="Comida Espacial">🌱 <span id="val-food">120</span></div>
+          <div class="res-chip crew" title="Turma na Base">🧑‍🚀 <span id="val-pop">4</span></div>
+        </div>
+
+        <div class="hud-actions">
+          <button id="btn-science" class="btn-chip" type="button" title="Mapas e dados NASA" aria-label="Mapas e dados NASA">🗺️</button>
+          <button id="btn-donki" class="btn-chip" type="button" title="Clima Espacial NASA">📡 <span class="hide-xs">NASA</span></button>
+          <button id="btn-badges" class="btn-chip" type="button" title="Medalhas da Base">🏅</button>
+          <button id="btn-settings" class="btn-chip" type="button" title="Ajustes e Modo Aula">⚙️</button>
+          <button id="btn-install" class="btn-chip accent hidden" type="button" title="Instalar App">📲</button>
+        </div>
+      </header>
+
+      <!-- Barra Fina de Saude da Vila -->
+      <div id="vitals-strip">
+        <div class="vital-group">
+          <div class="vital-meter" title="Vida da Turma">
+            <span>❤️</span>
+            <div class="bar-track"><div id="bar-life" class="bar-fill green"></div></div>
+            <b id="num-life">100%</b>
+          </div>
+          <div class="vital-meter" title="Escudo da Base">
+            <span>🛡️</span>
+            <div class="bar-track"><div id="bar-shield" class="bar-fill cyan"></div></div>
+            <b id="num-shield">100%</b>
+          </div>
+          <div id="rad-chip" class="vital-meter hidden" title="Alerta de Radiacao Solar">
+            <span>☢️</span>
+            <div class="bar-track"><div id="bar-rad" class="bar-fill red"></div></div>
+            <b id="num-rad">0%</b>
+          </div>
+        </div>
+        <div class="vital-score">⭐ <b id="val-score">0</b></div>
+      </div>
+
+      <!-- Banner de Alerta de Crise Espacial -->
+      <div id="crisis-banner" class="hidden" role="alert">
+        <span id="crisis-title">🔥 Tempestade Solar!</span>
+        <span id="crisis-desc">Coloque a turma no abrigo!</span>
+        <span id="crisis-timer" class="crisis-clock">35s</span>
+        <button id="btn-crisis-shelter" class="btn-crisis" type="button">🚨 Abrigar!</button>
+      </div>
+
+      <!-- Mundo Pixel 3/4 Top-Down -->
+      <main id="canvas-wrap">
+        <canvas id="game-canvas"></canvas>
+        <div id="crisis-vignette" class="hidden"></div>
+
+        <div id="zoom-controls">
+          <button id="btn-zoom-in" type="button" aria-label="Aproximar">+</button>
+          <button id="btn-zoom-out" type="button" aria-label="Afastar">-</button>
+          <button id="btn-center" type="button" aria-label="Centralizar Base">🎯</button>
+        </div>
+
+        <div id="placement-bar" class="hidden">
+          <span id="placement-label">Toque no chão para construir</span>
+          <button id="btn-cancel-place" type="button">✖ Cancelar</button>
+        </div>
+      </main>
+
+      <!-- Hotbar Stardew de 2 Abas -->
+      <footer id="bottom-dock">
+        <div class="dock-tabs">
+          <button class="dock-tab active" data-tab="build" type="button">🔨 Construir</button>
+          <button class="dock-tab" data-tab="crew" type="button">🧑‍🚀 Turma &amp; Base</button>
+        </div>
+        <div id="dock-content"></div>
+      </footer>
+
+      <div id="level-up-notice" class="hidden" role="dialog" aria-modal="true" aria-labelledby="level-up-heading"></div>
+
+      <!-- Modal Pergaminho / Madeira -->
+      <div id="modal-backdrop" class="hidden">
+        <div id="modal-card" role="dialog" aria-modal="true">
+          <div class="modal-header">
+            <h2 id="modal-title">Missão</h2>
+            <button id="modal-close" class="btn-chip" type="button">✖</button>
+          </div>
+          <div id="modal-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

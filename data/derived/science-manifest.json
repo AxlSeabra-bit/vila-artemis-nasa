@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "retrievedOn": "2026-11-15",
+  "iceSites": [
+    {
+      "id": "m3-1",
+      "x": 13,
+      "y": 10,
+      "sourcePixel": [
+        437,
+        403
+      ],
+      "bluePixels": 632
+    },
+    {
+      "id": "m3-2",
+      "x": 20,
+      "y": 10,
+      "sourcePixel": [
+        676,
+        393
+      ],
+      "bluePixels": 190
+    },
+    {
+      "id": "m3-3",
+      "x": 10,
+      "y": 19,
+      "sourcePixel": [
+        350,
+        692
+      ],
+      "bluePixels": 128
+    },
+    {
+      "id": "m3-4",
+      "x": 5,
+      "y": 13,
+      "sourcePixel": [
+        168,
+        492
+      ],
+      "bluePixels": 117
+    },
+    {
+      "id": "m3-5",
+      "x": 13,
+      "y": 20,
+      "sourcePixel": [
+        451,
+        743
+      ],
+      "bluePixels": 117
+    },
+    {
+      "id": "m3-6",
+      "x": 14,
+      "y": 6,
+      "sourcePixel": [
+        493,
+        256
+      ],
+      "bluePixels": 115
+    },
+    {
+      "id": "m3-7",
+      "x": 23,
+      "y": 5,
+      "sourcePixel": [
+        796,
+        240
+      ],
+      "bluePixels": 99
+    },
+    {
+      "id": "m3-8",
+      "x": 8,
+      "y": 8,
+      "sourcePixel": [
+        282,
+        339
+      ],
+      "bluePixels": 82
+    }
+  ],
+  "radiationSamples": [
+    {
+      "id": "terrain-a",
+      "sourcePixel": [
+        185,
+        188
+      ],
+      "approxModelCgy": 3000,
+      "relativeExposure": 0.625,
+      "rgb": [
+        6,
+        29,
+        199
+      ]
+    },
+    {
+      "id": "terrain-b",
+      "sourcePixel": [
+        158,
+        239
+      ],
+      "approxModelCgy": 4400,
+      "relativeExposure": 0.917,
+      "rgb": [
+        246,
+        80,
+        22
+      ]
+    },
+    {
+      "id": "terrain-c",
+      "sourcePixel": [
+        167,
+        314
+      ],
+      "approxModelCgy": 4700,
+      "relativeExposure": 0.979,
+      "rgb": [
+        122,
+        24,
+        2
+      ]
+    }
+  ],
+  "ice": {
+    "source": "https://www.usgs.gov/media/images/moons-south-pole-image-water-icepng",
+    "scienceSource": "https://www.jpl.nasa.gov/news/ice-confirmed-at-the-moons-poles/",
+    "credit": "NASA M³ / Chandrayaan-1 (ISRO), divulgação 2018, cópia USGS de domínio público",
+    "imageSize": [
+      934,
+      1009
+    ],
+    "crop": [
+      0,
+      55,
+      934,
+      983
+    ],
+    "method": "Cyan pixels: G>R+35, B>R+35, min(G,B)>80; eight separated cells. Schematic, not georeferenced. No ice concentration or excavation yield inferred."
+  },
+  "radiation": {
+    "source": "https://ntrs.nasa.gov/citations/20240004047",
+    "credit": "Phipps et al., LPSC 2024, Fig. 3",
+    "method": "Three pixels digitized by nearest legend color, rounded to 100 cGy. Relative factor = approximate model dose / 4800. Not a dosimeter or current lunar forecast.",
+    "assumptions": "Primary proton dose model, October 1989 SEP scenario, water target, 1 mm aluminum; LOLA 128 ppd terrain. Does not establish safe areas. Maps not co-registered.",
+    "figureCrop2x": [
+      149,
+      145,
+      595,
+      510
+    ]
+  },
+  "files": {
+    "donki-2024-05.json": {
+      "sha256": "c40fb041c3704f949b595b19a5d61b5f5c003ef1802ad0b1d69779e64b6829d0",
+      "bytes": 142933
+    },
+    "lunar-radiation-model.pdf": {
+      "sha256": "bc8859933e9e0c51ed9246ee9b535270eab5e20f23ca027171e735d2728aacbb",
+      "bytes": 385295
+    },
+    "moon-south-ice.png": {
+      "sha256": "9aa1783c2c3018da0afef75135a5f166cfe3a50816c2899baf6763b21ef95246",
+      "bytes": 1379092
+    },
+    "moon-trek-illumination.xml": {
+      "sha256": "52fcf200b7f13d48bc30148b534b09bcf76793bf050122b3dd168fe909ba0066",
+      "bytes": 6418
+    },
+    "radlab-iss.json": {
+      "sha256": "b555fa9c190e7b2ab77a71c37eb6a20b6b623dc9cb7b4572edb55d273014bbc1",
+      "bytes": 1484
+    }
+  }
+}

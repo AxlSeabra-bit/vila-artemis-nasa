@@ -1,0 +1,18 @@
+{
+  "source": "https://svs.gsfc.nasa.gov/4720/",
+  "download": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_2k.jpg",
+  "credit": "NASA GSFC Scientific Visualization Studio, LRO LROC and LOLA teams, Ernie Wright",
+  "retrievedOn": "2026-11-15",
+  "product": "CGI Moon Kit, 2025 color map, 2048 x 1024",
+  "sha256": "f7130a1822681fa7512d7dcfd40db8c10b9ba4f06777910348698260ed7a2170",
+  "projection": "Equirectangular, center longitude 0 degrees, west -180, east +180, north +90, south -90",
+  "usage": "Appearance and geographic orientation only. Optimized for visualization, not for deriving ice or dose. Markers are illustrative regional choices, not validated landing sites.",
+  "gameRules": {
+    "startingInvestment": 100,
+    "moonTravelCost": 100,
+    "marsTravelCost": 200,
+    "polarLogisticsExtra": 50,
+    "equatorialLogisticsExtra": 0
+  },
+  "communicationSource": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/scan/lunar-surface-propagation/"
+}

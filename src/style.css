@@ -1,0 +1,1001 @@
+:root {
+  --wood-dark: #3d1c0a;
+  --wood-mid: #76401e;
+  --wood-panel: #9b592c;
+  --wood-light: #d18c47;
+  --wood-rim: #f4c174;
+  --parchment: #fff4d8;
+  --parchment-2: #f4d9a6;
+  --parchment-3: #e7c283;
+  --parchment-line: #b47739;
+  --ink: #2b1507;
+  --ink-soft: #5f3817;
+  --green-px: #3eb537;
+  --green-dark: #1d6b1a;
+  --gold-px: #f7c634;
+  --gold-dark: #9c6509;
+  --sky-px: #38a8eb;
+  --sky-dark: #155387;
+  --red-px: #de4337;
+  --red-dark: #7d1914;
+  --void-bg: #201a38;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--void-bg);
+  color: var(--ink);
+  font-family: 'Fredoka', system-ui, -apple-system, sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.px-font {
+  font-family: 'Silkscreen', 'Fredoka', monospace;
+}
+
+/* Top HUD - Barra de Madeira Aconchegante */
+#top-hud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 6px 10px;
+  background: linear-gradient(180deg, #9b5829 0%, #6f3b19 100%);
+  border-bottom: 4px solid var(--wood-dark);
+  box-shadow: inset 0 2px 0 var(--wood-rim), 0 2px 0 rgba(0, 0, 0, 0.35);
+  color: #fff8e7;
+  z-index: 20;
+}
+
+.hud-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badge-nasa {
+  background: var(--red-px);
+  color: #fff;
+  font-family: 'Silkscreen', monospace;
+  font-weight: 700;
+  font-size: 10px;
+  padding: 3px 7px;
+  border: 2px solid var(--wood-dark);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 #ff8d80, 0 2px 0 var(--red-dark);
+  letter-spacing: 0.3px;
+}
+
+#hud-mission {
+  font-family: 'Silkscreen', 'Fredoka', monospace;
+  font-size: 12px;
+  color: #ffe999;
+  text-shadow: 1px 1px 0 var(--wood-dark);
+}
+
+.pill-sol, .pill-timer {
+  background: var(--parchment);
+  color: var(--ink);
+  border: 2px solid var(--wood-dark);
+  box-shadow: inset 0 -2px 0 var(--parchment-3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Silkscreen', 'Fredoka', monospace;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pill-timer {
+  background: #fef08a;
+  border-color: var(--gold-dark);
+  color: #6b2a04;
+}
+
+.rank-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(180deg, #ffe07d 0%, #f5b935 100%);
+  border: 2px solid var(--wood-dark);
+  box-shadow: inset 0 1px 0 #fff7cc, 0 2px 0 #703e06;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.rank-pill:active {
+  transform: translateY(1px);
+}
+
+.hud-resources {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.res-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--parchment);
+  color: var(--ink);
+  border: 2px solid var(--wood-dark);
+  box-shadow: inset 0 -2px 0 var(--parchment-2);
+  border-radius: 5px;
+  padding: 2px 7px;
+  font-family: 'Silkscreen', 'Fredoka', monospace;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.res-chip.energy span { color: #b45309; }
+.res-chip.water span { color: #0369a1; }
+.res-chip.food span { color: #15803d; }
+.res-chip.rock span { color: #78350f; }
+.res-chip.crew span { color: #4338ca; }
+
+.hud-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-chip, .px-select {
+  background: linear-gradient(180deg, #fff5dc 0%, #edd199 100%);
+  color: var(--ink);
+  border: 2px solid var(--wood-dark);
+  box-shadow: inset 0 1px 0 #ffffff, 0 2px 0 #4d280f;
+  border-radius: 5px;
+  padding: 5px 9px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.btn-chip:hover {
+  filter: brightness(1.04);
+}
+
+.btn-chip:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 1px 0 #edd199, 0 1px 0 #4d280f;
+}
+
+.btn-chip.accent {
+  background: linear-gradient(180deg, #5fd154 0%, #379c30 100%);
+  color: #fff;
+  text-shadow: 0 1px 0 #194d14;
+  border-color: var(--wood-dark);
+  box-shadow: inset 0 1px 0 #a3ef9a, 0 2px 0 var(--green-dark);
+}
+
+.btn-chip.live {
+  box-shadow: inset 0 1px 0 #ffffff, 0 0 0 2px #4ade80, 0 2px 0 #4d280f;
+}
+
+.btn-chip.danger {
+  background: linear-gradient(180deg, #f1695e 0%, #c93228 100%);
+  color: #fff;
+  text-shadow: 0 1px 0 #66120c;
+}
+
+/* Slim Vitals Strip */
+#vitals-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 3px 10px;
+  background: #ead1a2;
+  border-bottom: 3px solid var(--wood-dark);
+  color: var(--ink);
+  font-size: 12px;
+  z-index: 19;
+}
+
+.vital-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vital-meter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.vital-meter b {
+  font-family: 'Silkscreen', 'Fredoka', monospace;
+  font-size: 11px;
+  color: var(--ink);
+}
+
+.bar-track {
+  width: 62px;
+  height: 10px;
+  background: #533219;
+  border: 2px solid var(--wood-dark);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 100%;
+  transition: width 0.2s linear;
+}
+.bar-fill.green { background: #4cd137; }
+.bar-fill.cyan { background: #38a8eb; }
+.bar-fill.red { background: #e84118; }
+
+.vital-score {
+  font-family: 'Silkscreen', 'Fredoka', monospace;
+  font-size: 12px;
+  color: #854d0e;
+  font-weight: 700;
+  background: var(--parchment);
+  border: 2px solid var(--wood-dark);
+  border-radius: 4px;
+  padding: 1px 8px;
+}
+
+/* Crisis Banner */
+#crisis-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 12px;
+  background: linear-gradient(90deg, #dc2626 0%, #ea580c 100%);
+  border-bottom: 3px solid var(--wood-dark);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  animation: pulseBg 0.9s infinite alternate;
+  z-index: 18;
+}
+
+@keyframes pulseBg {
+  from { filter: brightness(0.95); }
+  to { filter: brightness(1.1); }
+}
+
+.btn-crisis {
+  background: #ffe066;
+  border: 2px solid var(--wood-dark);
+  color: var(--ink);
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 4px 9px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 0 #7a4c05;
+}
+
+.crisis-clock {
+  background: rgba(45, 16, 4, 0.45);
+  border: 1.5px solid #ffd166;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: 'Silkscreen', monospace;
+  font-size: 11px;
+}
+
+/* Canvas Area */
+#canvas-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 200px;
+  overflow: hidden;
+  background: var(--void-bg);
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+#crisis-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 46px rgba(239, 68, 68, 0.85), inset 0 0 90px rgba(220, 38, 38, 0.4);
+  border: 4px solid rgba(250, 204, 21, 0.8);
+  animation: crisisPulse 0.8s infinite alternate ease-in-out;
+  z-index: 14;
+}
+
+@keyframes crisisPulse {
+  from { opacity: 0.4; }
+  to { opacity: 0.95; }
+}
+
+/* Quest Banner Estilo Pergaminho Stardew */
+#quest-banner {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--parchment);
+  color: var(--ink);
+  border: 3px solid var(--wood-dark);
+  box-shadow: inset 0 0 0 2px var(--wood-rim), 0 4px 0 rgba(35, 14, 4, 0.55);
+  border-radius: 6px;
+  padding: 7px 10px;
+  max-width: 245px;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.qb-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.qb-header strong {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7c2d12;
+  flex: 1;
+}
+
+.qb-prog {
+  background: var(--gold-px);
+  border: 1.5px solid var(--wood-dark);
+  border-radius: 4px;
+  padding: 0 5px;
+  font-family: 'Silkscreen', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.qb-desc {
+  font-size: 12px;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.qb-reward {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+/* Controles de Zoom Estilo Madeira */
+#zoom-controls {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 16;
+}
+
+#zoom-controls button {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  border: 3px solid var(--wood-dark);
+  background: var(--parchment);
+  color: var(--ink);
+  box-shadow: inset 0 1px 0 #fff, 0 3px 0 #3d1c0a;
+  font-family: 'Silkscreen', monospace;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#zoom-controls button:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 1px 0 #fff, 0 1px 0 #3d1c0a;
+}
+
+/* Barra Flutuante ao Construir */
+#placement-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--parchment);
+  color: var(--ink);
+  border: 3px solid var(--wood-dark);
+  box-shadow: inset 0 0 0 2px var(--green-px), 0 4px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  z-index: 15;
+  white-space: nowrap;
+}
+
+#placement-bar button {
+  background: var(--red-px);
+  color: #fff;
+  border: 2px solid var(--wood-dark);
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Hotbar Inferior Stardew (2 Abas) */
+#bottom-dock {
+  background: linear-gradient(180deg, #9b5829 0%, #633315 100%);
+  border-top: 4px solid var(--wood-dark);
+  box-shadow: inset 0 2px 0 var(--wood-rim);
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+  z-index: 20;
+}
+
+.dock-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.dock-tab {
+  flex: 1;
+  background: #562b10;
+  color: #f4d9a6;
+  border: 2px solid var(--wood-dark);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dock-tab.active {
+  background: var(--parchment);
+  color: var(--ink);
+  box-shadow: inset 0 -2px 0 var(--parchment-3), 0 2px 0 var(--wood-dark);
+}
+
+#dock-content {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px 2px 4px;
+}
+
+.action-card {
+  flex: 0 0 auto;
+  min-width: 112px;
+  min-height: 76px;
+  background: var(--parchment);
+  border: 3px solid var(--wood-dark);
+  box-shadow: inset 0 0 0 2px var(--parchment-2), 0 3px 0 #331607;
+  border-radius: 6px;
+  padding: 5px 8px;
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.action-card:hover {
+  transform: translateY(-1px);
+  background: #fff9ea;
+}
+
+.action-card.selected {
+  background: #e2fbe0;
+  box-shadow: inset 0 0 0 2px var(--green-px), 0 3px 0 var(--green-dark);
+}
+
+.action-card.hand-slot.selected {
+  background: #fef3c7;
+  box-shadow: inset 0 0 0 2px var(--gold-px), 0 3px 0 var(--gold-dark);
+}
+
+.action-card.danger {
+  background: #fee2e2;
+  box-shadow: inset 0 0 0 2px var(--red-px), 0 3px 0 var(--red-dark);
+}
+
+.action-card.locked-mystery {
+  background: #d9bf93;
+  color: #6b4724;
+  border-style: dashed;
+  cursor: default;
+  opacity: 0.9;
+}
+
+.action-card:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.pixel-thumb {
+  width: 34px;
+  height: 34px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 0 rgba(43, 21, 7, 0.35));
+}
+
+.pixel-thumb-lg {
+  width: 68px;
+  height: 68px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  object-fit: contain;
+  background: #e7c995;
+  border: 3px solid var(--wood-dark);
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.action-card .ac-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.15;
+}
+
+.action-card .ac-cost {
+  font-family: 'Silkscreen', 'Fredoka', monospace;
+  font-size: 10px;
+  color: var(--ink-soft);
+}
+
+/* Modais Estilo Caixa de Madeira + Pergaminho */
+#modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 12, 32, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  z-index: 50;
+}
+
+#modal-card {
+  width: 100%;
+  max-width: 660px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--parchment);
+  color: var(--ink);
+  border: 4px solid var(--wood-dark);
+  box-shadow: inset 0 0 0 3px var(--wood-light), 0 10px 0 #1f0e06;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: -14px -16px 12px -16px;
+  padding: 10px 16px;
+  background: linear-gradient(180deg, #9b5829 0%, #6f3b19 100%);
+  border-bottom: 4px solid var(--wood-dark);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 17px;
+  color: #fff6da;
+  text-shadow: 1px 1px 0 var(--wood-dark);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.rogue-card {
+  background: var(--parchment-2);
+  border: 3px solid var(--wood-dark);
+  box-shadow: inset 0 1px 0 #fff, 0 3px 0 #4a2511;
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rogue-card:hover {
+  background: #fff9e6;
+  transform: translateY(-2px);
+}
+
+.rogue-card .rc-icon { font-size: 28px; }
+.rogue-card .rc-title { font-weight: 700; font-size: 14px; color: #7c2d12; }
+.rogue-card .rc-desc { font-size: 12px; color: var(--ink); }
+.rogue-card .rc-trade { font-size: 11px; color: #991b1b; font-weight: 600; }
+
+.quiz-opt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 2px solid var(--wood-dark);
+  background: var(--parchment-2);
+  color: var(--ink);
+  font-family: 'Fredoka', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #4a2511;
+}
+
+.quiz-opt:hover {
+  background: #fff8df;
+}
+
+/* Cards Didaticos NASA DONKI em Pergaminho */
+.telemetry-panel {
+  background: var(--parchment-2);
+  border: 3px solid var(--wood-dark);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.telemetry-panel-hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  border-bottom: 2px dashed var(--parchment-line);
+}
+
+.telemetry-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: #0369a1;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.telemetry-alert {
+  background: var(--parchment);
+  border: 2px solid var(--wood-dark);
+  border-left: 6px solid var(--sky-px);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+}
+
+.telemetry-alert.sev-3 { border-left-color: var(--red-px); }
+.telemetry-alert.sev-2 { border-left-color: #d97706; }
+
+.donki-card-junior {
+  background: var(--parchment-2);
+  border: 2px solid var(--wood-dark);
+  border-left: 6px solid var(--sky-px);
+  border-radius: 8px;
+  padding: 11px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.donki-card-junior.severity-3 { border-left-color: var(--red-px); }
+.donki-card-junior.severity-2 { border-left-color: #d97706; }
+.donki-card-junior.severity-1 { border-left-color: var(--sky-px); }
+
+.dc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dc-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.dc-stars { font-size: 13px; }
+
+.dc-desc {
+  font-size: 12px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.dc-impact {
+  font-size: 12px;
+  color: #991b1b;
+}
+
+.dc-action {
+  font-size: 12px;
+  background: #e0f2fe;
+  border: 1.5px solid #0284c7;
+  border-radius: 6px;
+  padding: 5px 8px;
+  color: #0c4a6e;
+}
+
+.dc-quiz-box {
+  background: var(--parchment);
+  border: 2px dashed var(--parchment-line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-top: 2px;
+}
+
+.dc-reward-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green-dark);
+  background: #dcfce7;
+  border: 1px solid #4ade80;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Inspecao de Construcao */
+.inspect-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inspect-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.inspect-stars {
+  font-size: 17px;
+  color: #b45309;
+}
+
+.inspect-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+}
+
+.stat-pill {
+  background: var(--parchment-2);
+  border: 2px solid var(--parchment-line);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.btn-upgrade {
+  background: linear-gradient(180deg, #5fd154 0%, #32942c 100%);
+  border: 3px solid var(--wood-dark);
+  box-shadow: inset 0 1px 0 #bbf7d0, 0 3px 0 var(--green-dark);
+  color: #fff;
+  text-shadow: 0 1px 0 #14532d;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Medalhas e Patentes */
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.badge-item {
+  background: var(--parchment-2);
+  border: 2px solid var(--wood-dark);
+  border-radius: 8px;
+  padding: 9px 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.badge-item.locked {
+  opacity: 0.78;
+  filter: grayscale(0.35);
+}
+
+.badge-item.unlocked {
+  background: #fef3c7;
+  border-color: var(--wood-dark);
+  box-shadow: inset 0 0 0 2px var(--gold-px);
+}
+
+.bi-icon { font-size: 26px; }
+
+.bi-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bi-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: #78350f;
+}
+
+.bi-desc { font-size: 11px; color: var(--ink); }
+.bi-fact { font-size: 10px; color: var(--ink-soft); font-style: italic; }
+
+/* Painel de Ajustes Simples para Criancas/Professores */
+.settings-group {
+  background: var(--parchment-2);
+  border: 2px solid var(--wood-dark);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Mobile 360px - 480px */
+@media (max-width: 480px) {
+  #top-hud {
+    padding: 4px 6px;
+    gap: 3px;
+  }
+  .btn-chip {
+    min-height: 27px;
+    padding: 3px 7px;
+  }
+  .hide-xs {
+    display: none;
+  }
+  .badge-nasa {
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+  #hud-mission {
+    font-size: 11px;
+  }
+  .pill-sol, .pill-timer {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  .rank-pill {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+  .res-chip {
+    padding: 2px 5px;
+    font-size: 11px;
+  }
+  #vitals-strip {
+    padding: 3px 6px;
+  }
+  .bar-track {
+    width: 44px;
+    height: 8px;
+  }
+  #quest-banner {
+    max-width: 198px;
+    padding: 5px 8px;
+    top: 6px;
+    left: 6px;
+  }
+  .qb-desc {
+    font-size: 11px;
+  }
+  #zoom-controls {
+    top: 6px;
+    right: 6px;
+    gap: 4px;
+  }
+  #zoom-controls button {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+  .action-card {
+    min-width: 96px;
+    min-height: 70px;
+    padding: 4px 6px;
+  }
+  .pixel-thumb {
+    width: 30px;
+    height: 30px;
+  }
+}
+/* NASA data stays in the parchment UI, while the game keeps its v3 pixel sprites. */
+.science-intro,.science-note { background:#f7e6bd;padding:12px;border:2px solid #c99b5c;border-radius:8px;line-height:1.5; }
+.science-tabs,.science-choices {display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+.science-map {position:relative;max-width:520px;margin:12px auto;background:#fff;border:3px solid var(--wood-dark);}
+.science-map img {display:block;width:100%;height:auto;image-rendering:auto;}
+.radiation-map {max-width:446px;}
+.map-pin {position:absolute;transform:translate(-50%,-50%);border:2px solid #3d1c0a;border-radius:50%;background:#fff4d8;color:#3d1c0a;font:bold 14px Fredoka,sans-serif;min-width:30px;min-height:30px;cursor:pointer;display:grid;place-items:center;box-shadow:0 0 0 2px #00aab0;}
+.map-pin:focus-visible {outline:4px solid #f5a623;outline-offset:2px;}
+.rad-pin {cursor:default;min-width:25px;min-height:25px;box-shadow:none;}
+.science-caption {font-size:12px;color:var(--ink-soft);}
+.science-provenance {margin-top:16px;}
+#science-content {font-size:14px;line-height:1.45;overflow-wrap:anywhere;}
+#science-content details {margin:12px 0;}
+.science-bars>div {display:grid;grid-template-columns:70px 1fr 45px;gap:8px;align-items:center;margin:8px 0;}
+.science-bars meter {width:100%;height:20px;}
+.onboarding-hint {position:absolute;bottom:12px;left:12px;max-width:calc(100% - 90px);z-index:4;animation:hint-bob 1.5s steps(3) infinite;}
+@keyframes hint-bob {50% {transform:translateY(-4px);}}
+@media (prefers-reduced-motion:reduce) {.onboarding-hint {animation:none;}}

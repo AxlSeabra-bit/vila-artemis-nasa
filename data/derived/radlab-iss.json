@@ -1,0 +1,150 @@
+{
+  "unit": "µGy/h",
+  "records": [
+    {
+      "timestamp": "2022-04-01T23:00:00",
+      "instrument_id": "DosTel2",
+      "absorbed_dose_rate": 10.2160856666667,
+      "instrument": "DosTel2",
+      "latitude": -43.160972,
+      "longitude": 131.30666,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:00:00",
+      "instrument_id": "DosTel1",
+      "absorbed_dose_rate": 9.815504,
+      "instrument": "DosTel1",
+      "latitude": -43.160972,
+      "longitude": 131.30666,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:00:33",
+      "instrument_id": "DosTel1",
+      "absorbed_dose_rate": 9.835079,
+      "instrument": "DosTel1",
+      "latitude": -42.007244,
+      "longitude": 133.593398,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:00:35",
+      "instrument_id": "DosTel2",
+      "absorbed_dose_rate": 11.088263,
+      "instrument": "DosTel2",
+      "latitude": -41.935687,
+      "longitude": 133.729144,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:02:13",
+      "instrument_id": "DosTel1",
+      "absorbed_dose_rate": 7.949537,
+      "instrument": "DosTel1",
+      "latitude": -38.222992,
+      "longitude": 140.00293,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:02:15",
+      "instrument_id": "DosTel2",
+      "absorbed_dose_rate": 8.210985,
+      "instrument": "DosTel2",
+      "latitude": -38.143339,
+      "longitude": 140.123612,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:03:53",
+      "instrument_id": "DosTel1",
+      "absorbed_dose_rate": 6.228811,
+      "instrument": "DosTel1",
+      "latitude": -34.078543,
+      "longitude": 145.713052,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:03:55",
+      "instrument_id": "DosTel2",
+      "absorbed_dose_rate": 6.067535,
+      "instrument": "DosTel2",
+      "latitude": -33.992555,
+      "longitude": 145.820906,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:05:00",
+      "instrument_id": "DosTel2",
+      "absorbed_dose_rate": 4.72532794871795,
+      "instrument": "DosTel2",
+      "latitude": -31.140586,
+      "longitude": 149.204644,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:05:00",
+      "instrument_id": "DosTel1",
+      "absorbed_dose_rate": 5.26644315384615,
+      "instrument": "DosTel1",
+      "latitude": -31.140586,
+      "longitude": 149.204644,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:05:33",
+      "instrument_id": "DosTel1",
+      "absorbed_dose_rate": 5.935572,
+      "instrument": "DosTel1",
+      "latitude": -29.653575,
+      "longitude": 150.838396,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:05:47",
+      "instrument_id": "DosTel2",
+      "absorbed_dose_rate": 4.441754,
+      "instrument": "DosTel2",
+      "latitude": -29.015519,
+      "longitude": 151.515738,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:07:25",
+      "instrument_id": "DosTel1",
+      "absorbed_dose_rate": 3.554651,
+      "instrument": "DosTel1",
+      "latitude": -24.443458,
+      "longitude": 156.021942,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:07:27",
+      "instrument_id": "DosTel2",
+      "absorbed_dose_rate": 3.50563,
+      "instrument": "DosTel2",
+      "latitude": -24.348416,
+      "longitude": 156.110002,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:09:05",
+      "instrument_id": "DosTel1",
+      "absorbed_dose_rate": 2.907824,
+      "instrument": "DosTel1",
+      "latitude": -19.621111,
+      "longitude": 160.264118,
+      "spacecraft": "ISS"
+    },
+    {
+      "timestamp": "2022-04-01T23:09:07",
+      "instrument_id": "DosTel2",
+      "absorbed_dose_rate": 2.458224,
+      "instrument": "DosTel2",
+      "latitude": -19.52334,
+      "longitude": 160.345915,
+      "spacecraft": "ISS"
+    }
+  ],
+  "environment": "ISS, órbita da Terra, não Lua"
+}
